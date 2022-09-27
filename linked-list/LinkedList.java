@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class LinkedList {
 
     Node head; // head of the list
@@ -19,6 +21,12 @@ public class LinkedList {
             System.out.println(currentNode.value);
             currentNode = currentNode.next;
         }
+    }
+
+    public void insertAtFirst(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
     }
 
     public Node insertAtTail(Node head, int data) {
@@ -45,11 +53,21 @@ public class LinkedList {
 
         // System.out.println(list.head);
 
-        Node newNode = list.insertAtTail(list.head, 1);
-        list.head = newNode;
-        list.insertAtTail(list.head, 23);
+        Scanner scan = new Scanner(System.in);
+
+        int n = scan.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int data = scan.nextInt();
+            Node newNode = list.insertAtTail(list.head, data);
+            list.head = newNode;
+        }
+
+        list.insertAtFirst(20);
 
         list.printList();
+
+        scan.close();
     }
 
 }
